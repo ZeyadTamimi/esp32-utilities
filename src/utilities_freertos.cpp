@@ -12,6 +12,7 @@
 
 #include <stdexcept>
 
+#include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 
 #include "utilities_freertos.hpp"
