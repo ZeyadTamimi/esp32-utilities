@@ -13,29 +13,8 @@
 #ifndef COMPONENTS_UTILITIES_UTILITIES_FREERTOS_HPP
 #define COMPONENTS_UTILITIES_UTILITIES_FREERTOS_HPP
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
-
-
-namespace Utilities
-{
-
-/**
- * @brief RAII wrapper for FreRTOS semaphores.
- * @detail This class attempts to take the semaphore upon construction and automatically releases it
- *         upon destruction.
- */
-class AnchorSemaphore
-{
-public:
-    AnchorSemaphore(SemaphoreHandle_t sem, TickType_t timeout=portMAX_DELAY);
-    ~AnchorSemaphore(void);
-
-private:
-    SemaphoreHandle_t   m_sem;
-};
-
-};
+#include "anchors.hpp"
+#include "notification_manager.hpp"
 
 #endif // COMPONENTS_UTILITIES_UTILITIES_FREERTOS_HPP
 

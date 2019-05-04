@@ -1,7 +1,7 @@
 /**
- * @file   utilities_freertos.cpp
+ * @file anchors.hpp
  *
- * @brief  FreeRTOS C++ utilities library.
+ * @brief  RAII wrappers around FreeRTOS synchronization primitives.
  * @date   03/04/2019
  * @author Zeyad Tamimi (ZeyadTamimi@Outlook.com)
  * @copyright Copyright (c) 2019 Zeyad Tamimi. All rights reserved.
@@ -15,7 +15,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 
-#include "utilities_freertos.hpp"
+#include "anchors.hpp"
 
 
 namespace Utilities
@@ -26,6 +26,7 @@ AnchorSemaphore::AnchorSemaphore(SemaphoreHandle_t sem, TickType_t timeout) : m_
     if (xSemaphoreTake(m_sem, timeout) != pdTRUE)
         throw std::runtime_error("Failed to grab semaphore");
 }
+
 
 AnchorSemaphore::~AnchorSemaphore(void)
 {
